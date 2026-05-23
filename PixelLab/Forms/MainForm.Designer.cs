@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.topPanel = new System.Windows.Forms.Panel();
+            this.ColorQuant = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.rightPanel = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -99,12 +100,12 @@
             this.fformat = new System.Windows.Forms.Label();
             this.fname = new System.Windows.Forms.Label();
             this.imagepanel = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.resetBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
             this.openBtn = new System.Windows.Forms.Button();
-            this.ColorQuant = new System.Windows.Forms.Button();
             this.topPanel.SuspendLayout();
             this.rightPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -129,6 +130,7 @@
             // topPanel
             // 
             this.topPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(97)))), ((int)(((byte)(115)))));
+            this.topPanel.Controls.Add(this.button1);
             this.topPanel.Controls.Add(this.ColorQuant);
             this.topPanel.Controls.Add(this.panel6);
             this.topPanel.Controls.Add(this.resetBtn);
@@ -140,6 +142,22 @@
             this.topPanel.Name = "topPanel";
             this.topPanel.Size = new System.Drawing.Size(1540, 59);
             this.topPanel.TabIndex = 0;
+            // 
+            // ColorQuant
+            // 
+            this.ColorQuant.FlatAppearance.BorderSize = 0;
+            this.ColorQuant.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColorQuant.Font = new System.Drawing.Font("Microsoft Tai Le", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ColorQuant.ForeColor = System.Drawing.SystemColors.Window;
+            this.ColorQuant.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ColorQuant.Location = new System.Drawing.Point(493, 11);
+            this.ColorQuant.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ColorQuant.Name = "ColorQuant";
+            this.ColorQuant.Size = new System.Drawing.Size(217, 39);
+            this.ColorQuant.TabIndex = 13;
+            this.ColorQuant.Text = "🎨 Color Quantization";
+            this.ColorQuant.UseVisualStyleBackColor = true;
+            this.ColorQuant.Click += new System.EventHandler(this.ColorQuant_Click);
             // 
             // panel6
             // 
@@ -243,7 +261,7 @@
             this.previewChannels.AutoSize = true;
             this.previewChannels.Location = new System.Drawing.Point(5, 148);
             this.previewChannels.Name = "previewChannels";
-            this.previewChannels.Size = new System.Drawing.Size(105, 16);
+            this.previewChannels.Size = new System.Drawing.Size(131, 19);
             this.previewChannels.TabIndex = 16;
             this.previewChannels.Text = "Preview Channels";
             // 
@@ -349,7 +367,7 @@
             this.comboBox1.Location = new System.Drawing.Point(117, 26);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(160, 24);
+            this.comboBox1.Size = new System.Drawing.Size(160, 27);
             this.comboBox1.TabIndex = 18;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -370,7 +388,7 @@
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(31, 257);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(31, 16);
+            this.label4.Size = new System.Drawing.Size(39, 19);
             this.label4.TabIndex = 10;
             this.label4.Text = "blue";
             // 
@@ -382,7 +400,7 @@
             this.CVal4.ForeColor = System.Drawing.Color.Black;
             this.CVal4.Location = new System.Drawing.Point(252, 279);
             this.CVal4.Name = "CVal4";
-            this.CVal4.Size = new System.Drawing.Size(15, 15);
+            this.CVal4.Size = new System.Drawing.Size(16, 18);
             this.CVal4.TabIndex = 17;
             this.CVal4.Text = "0";
             // 
@@ -407,7 +425,7 @@
             this.saturationVal.ForeColor = System.Drawing.Color.Black;
             this.saturationVal.Location = new System.Drawing.Point(251, 430);
             this.saturationVal.Name = "saturationVal";
-            this.saturationVal.Size = new System.Drawing.Size(15, 15);
+            this.saturationVal.Size = new System.Drawing.Size(16, 18);
             this.saturationVal.TabIndex = 15;
             this.saturationVal.Text = "0";
             this.saturationVal.Click += new System.EventHandler(this.saturationVal_Click);
@@ -420,7 +438,7 @@
             this.brightVal.ForeColor = System.Drawing.Color.Black;
             this.brightVal.Location = new System.Drawing.Point(251, 358);
             this.brightVal.Name = "brightVal";
-            this.brightVal.Size = new System.Drawing.Size(15, 15);
+            this.brightVal.Size = new System.Drawing.Size(16, 18);
             this.brightVal.TabIndex = 14;
             this.brightVal.Text = "0";
             this.brightVal.Click += new System.EventHandler(this.brightVal_Click);
@@ -432,7 +450,7 @@
             this.label8.ForeColor = System.Drawing.Color.Black;
             this.label8.Location = new System.Drawing.Point(13, 411);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(80, 16);
+            this.label8.Size = new System.Drawing.Size(101, 19);
             this.label8.TabIndex = 13;
             this.label8.Text = "💧saturation";
             this.label8.Click += new System.EventHandler(this.label8_Click);
@@ -444,7 +462,7 @@
             this.label7.ForeColor = System.Drawing.Color.Black;
             this.label7.Location = new System.Drawing.Point(13, 340);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(85, 16);
+            this.label7.Size = new System.Drawing.Size(107, 19);
             this.label7.TabIndex = 12;
             this.label7.Text = "☀️ brightness";
             // 
@@ -524,7 +542,7 @@
             this.CVal2.ForeColor = System.Drawing.Color.Black;
             this.CVal2.Location = new System.Drawing.Point(252, 148);
             this.CVal2.Name = "CVal2";
-            this.CVal2.Size = new System.Drawing.Size(15, 15);
+            this.CVal2.Size = new System.Drawing.Size(16, 18);
             this.CVal2.TabIndex = 7;
             this.CVal2.Text = "0";
             this.CVal2.Click += new System.EventHandler(this.greenVal_Click);
@@ -537,7 +555,7 @@
             this.CVal3.ForeColor = System.Drawing.Color.Black;
             this.CVal3.Location = new System.Drawing.Point(252, 213);
             this.CVal3.Name = "CVal3";
-            this.CVal3.Size = new System.Drawing.Size(15, 15);
+            this.CVal3.Size = new System.Drawing.Size(16, 18);
             this.CVal3.TabIndex = 8;
             this.CVal3.Text = "0";
             this.CVal3.Click += new System.EventHandler(this.blueVal_Click);
@@ -550,7 +568,7 @@
             this.CVal1.ForeColor = System.Drawing.Color.Black;
             this.CVal1.Location = new System.Drawing.Point(252, 84);
             this.CVal1.Name = "CVal1";
-            this.CVal1.Size = new System.Drawing.Size(15, 15);
+            this.CVal1.Size = new System.Drawing.Size(16, 18);
             this.CVal1.TabIndex = 9;
             this.CVal1.Text = "0";
             this.CVal1.Click += new System.EventHandler(this.redVal_Click);
@@ -562,7 +580,7 @@
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(31, 194);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(31, 16);
+            this.label3.Size = new System.Drawing.Size(39, 19);
             this.label3.TabIndex = 8;
             this.label3.Text = "blue";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -574,7 +592,7 @@
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(31, 129);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 16);
+            this.label2.Size = new System.Drawing.Size(49, 19);
             this.label2.TabIndex = 7;
             this.label2.Text = "green";
             // 
@@ -585,7 +603,7 @@
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(31, 64);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(26, 16);
+            this.label1.Size = new System.Drawing.Size(32, 19);
             this.label1.TabIndex = 6;
             this.label1.Text = "red";
             // 
@@ -767,7 +785,7 @@
             this.fRGB.AutoSize = true;
             this.fRGB.Location = new System.Drawing.Point(4, 1);
             this.fRGB.Name = "fRGB";
-            this.fRGB.Size = new System.Drawing.Size(46, 16);
+            this.fRGB.Size = new System.Drawing.Size(60, 19);
             this.fRGB.TabIndex = 0;
             this.fRGB.Text = "(R,G,B)";
             this.fRGB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -778,7 +796,7 @@
             this.fYUV.AutoSize = true;
             this.fYUV.Location = new System.Drawing.Point(4, 79);
             this.fYUV.Name = "fYUV";
-            this.fYUV.Size = new System.Drawing.Size(45, 16);
+            this.fYUV.Size = new System.Drawing.Size(59, 19);
             this.fYUV.TabIndex = 3;
             this.fYUV.Text = "(Y,U,V)";
             // 
@@ -787,7 +805,7 @@
             this.fLAB.AutoSize = true;
             this.fLAB.Location = new System.Drawing.Point(4, 106);
             this.fLAB.Name = "fLAB";
-            this.fLAB.Size = new System.Drawing.Size(43, 16);
+            this.fLAB.Size = new System.Drawing.Size(58, 19);
             this.fLAB.TabIndex = 4;
             this.fLAB.Text = "(L,A,B)";
             // 
@@ -797,7 +815,7 @@
             this.fileHSV.ForeColor = System.Drawing.Color.Black;
             this.fileHSV.Location = new System.Drawing.Point(125, 25);
             this.fileHSV.Name = "fileHSV";
-            this.fileHSV.Size = new System.Drawing.Size(85, 16);
+            this.fileHSV.Size = new System.Drawing.Size(111, 19);
             this.fileHSV.TabIndex = 6;
             this.fileHSV.Text = "( H* , S% ,V% )";
             // 
@@ -807,7 +825,7 @@
             this.fileCMYK.ForeColor = System.Drawing.Color.Black;
             this.fileCMYK.Location = new System.Drawing.Point(125, 52);
             this.fileCMYK.Name = "fileCMYK";
-            this.fileCMYK.Size = new System.Drawing.Size(121, 16);
+            this.fileCMYK.Size = new System.Drawing.Size(159, 19);
             this.fileCMYK.TabIndex = 7;
             this.fileCMYK.Text = "( C% , M% , Y% , K% )";
             // 
@@ -817,7 +835,7 @@
             this.fileYUV.ForeColor = System.Drawing.Color.Black;
             this.fileYUV.Location = new System.Drawing.Point(125, 79);
             this.fileYUV.Name = "fileYUV";
-            this.fileYUV.Size = new System.Drawing.Size(60, 16);
+            this.fileYUV.Size = new System.Drawing.Size(79, 19);
             this.fileYUV.TabIndex = 8;
             this.fileYUV.Text = "( Y , U ,V )";
             // 
@@ -827,7 +845,7 @@
             this.fileLAB.ForeColor = System.Drawing.Color.Black;
             this.fileLAB.Location = new System.Drawing.Point(125, 106);
             this.fileLAB.Name = "fileLAB";
-            this.fileLAB.Size = new System.Drawing.Size(61, 16);
+            this.fileLAB.Size = new System.Drawing.Size(82, 19);
             this.fileLAB.TabIndex = 9;
             this.fileLAB.Text = "( L , A , B )";
             // 
@@ -836,7 +854,7 @@
             this.fHSV.AutoSize = true;
             this.fHSV.Location = new System.Drawing.Point(4, 25);
             this.fHSV.Name = "fHSV";
-            this.fHSV.Size = new System.Drawing.Size(45, 16);
+            this.fHSV.Size = new System.Drawing.Size(58, 19);
             this.fHSV.TabIndex = 1;
             this.fHSV.Text = "(H,S,V)";
             this.fHSV.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -847,7 +865,7 @@
             this.fCMYK.AutoSize = true;
             this.fCMYK.Location = new System.Drawing.Point(4, 52);
             this.fCMYK.Name = "fCMYK";
-            this.fCMYK.Size = new System.Drawing.Size(57, 16);
+            this.fCMYK.Size = new System.Drawing.Size(75, 19);
             this.fCMYK.TabIndex = 2;
             this.fCMYK.Text = "(C,M,Y,K)";
             // 
@@ -857,7 +875,7 @@
             this.fileRGB.ForeColor = System.Drawing.Color.Black;
             this.fileRGB.Location = new System.Drawing.Point(125, 1);
             this.fileRGB.Name = "fileRGB";
-            this.fileRGB.Size = new System.Drawing.Size(64, 16);
+            this.fileRGB.Size = new System.Drawing.Size(84, 19);
             this.fileRGB.TabIndex = 5;
             this.fileRGB.Text = "( R , G , B )";
             this.fileRGB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -906,7 +924,7 @@
             this.fileheight.AutoSize = true;
             this.fileheight.Location = new System.Drawing.Point(327, 121);
             this.fileheight.Name = "fileheight";
-            this.fileheight.Size = new System.Drawing.Size(43, 16);
+            this.fileheight.Size = new System.Drawing.Size(54, 19);
             this.fileheight.TabIndex = 27;
             this.fileheight.Text = "height";
             // 
@@ -915,7 +933,7 @@
             this.filewidth.AutoSize = true;
             this.filewidth.Location = new System.Drawing.Point(327, 79);
             this.filewidth.Name = "filewidth";
-            this.filewidth.Size = new System.Drawing.Size(39, 16);
+            this.filewidth.Size = new System.Drawing.Size(49, 19);
             this.filewidth.TabIndex = 26;
             this.filewidth.Text = "width";
             this.filewidth.Click += new System.EventHandler(this.filewidth_Click);
@@ -925,7 +943,7 @@
             this.fileresolution.AutoSize = true;
             this.fileresolution.Location = new System.Drawing.Point(327, 41);
             this.fileresolution.Name = "fileresolution";
-            this.fileresolution.Size = new System.Drawing.Size(63, 16);
+            this.fileresolution.Size = new System.Drawing.Size(80, 19);
             this.fileresolution.TabIndex = 25;
             this.fileresolution.Text = "resolution";
             this.fileresolution.Click += new System.EventHandler(this.label4_Click_1);
@@ -937,7 +955,7 @@
             this.fheight.ForeColor = System.Drawing.Color.Black;
             this.fheight.Location = new System.Drawing.Point(223, 121);
             this.fheight.Name = "fheight";
-            this.fheight.Size = new System.Drawing.Size(46, 16);
+            this.fheight.Size = new System.Drawing.Size(58, 19);
             this.fheight.TabIndex = 24;
             this.fheight.Text = "height:";
             // 
@@ -948,7 +966,7 @@
             this.fwidth.ForeColor = System.Drawing.Color.Black;
             this.fwidth.Location = new System.Drawing.Point(223, 79);
             this.fwidth.Name = "fwidth";
-            this.fwidth.Size = new System.Drawing.Size(42, 16);
+            this.fwidth.Size = new System.Drawing.Size(53, 19);
             this.fwidth.TabIndex = 23;
             this.fwidth.Text = "width:";
             // 
@@ -959,7 +977,7 @@
             this.fresolution.ForeColor = System.Drawing.Color.Black;
             this.fresolution.Location = new System.Drawing.Point(223, 41);
             this.fresolution.Name = "fresolution";
-            this.fresolution.Size = new System.Drawing.Size(66, 16);
+            this.fresolution.Size = new System.Drawing.Size(84, 19);
             this.fresolution.TabIndex = 22;
             this.fresolution.Text = "resolution:";
             this.fresolution.Click += new System.EventHandler(this.fresolution_Click);
@@ -969,7 +987,7 @@
             this.filesaze.AutoSize = true;
             this.filesaze.Location = new System.Drawing.Point(104, 121);
             this.filesaze.Name = "filesaze";
-            this.filesaze.Size = new System.Drawing.Size(28, 16);
+            this.filesaze.Size = new System.Drawing.Size(35, 19);
             this.filesaze.TabIndex = 21;
             this.filesaze.Text = "size";
             // 
@@ -978,7 +996,7 @@
             this.fileformat.AutoSize = true;
             this.fileformat.Location = new System.Drawing.Point(104, 79);
             this.fileformat.Name = "fileformat";
-            this.fileformat.Size = new System.Drawing.Size(46, 16);
+            this.fileformat.Size = new System.Drawing.Size(58, 19);
             this.fileformat.TabIndex = 20;
             this.fileformat.Text = "format";
             // 
@@ -988,7 +1006,7 @@
             this.filename.Location = new System.Drawing.Point(104, 41);
             this.filename.MaximumSize = new System.Drawing.Size(0, 16);
             this.filename.Name = "filename";
-            this.filename.Size = new System.Drawing.Size(38, 16);
+            this.filename.Size = new System.Drawing.Size(48, 16);
             this.filename.TabIndex = 19;
             this.filename.Text = "name";
             this.filename.Click += new System.EventHandler(this.filename_Click);
@@ -1000,7 +1018,7 @@
             this.fsize.ForeColor = System.Drawing.Color.Black;
             this.fsize.Location = new System.Drawing.Point(5, 121);
             this.fsize.Name = "fsize";
-            this.fsize.Size = new System.Drawing.Size(52, 16);
+            this.fsize.Size = new System.Drawing.Size(65, 19);
             this.fsize.TabIndex = 18;
             this.fsize.Text = "file size:";
             // 
@@ -1011,7 +1029,7 @@
             this.fformat.ForeColor = System.Drawing.Color.Black;
             this.fformat.Location = new System.Drawing.Point(5, 79);
             this.fformat.Name = "fformat";
-            this.fformat.Size = new System.Drawing.Size(52, 16);
+            this.fformat.Size = new System.Drawing.Size(66, 19);
             this.fformat.TabIndex = 17;
             this.fformat.Text = "format :";
             // 
@@ -1022,7 +1040,7 @@
             this.fname.ForeColor = System.Drawing.Color.Black;
             this.fname.Location = new System.Drawing.Point(5, 41);
             this.fname.Name = "fname";
-            this.fname.Size = new System.Drawing.Size(62, 16);
+            this.fname.Size = new System.Drawing.Size(78, 19);
             this.fname.TabIndex = 16;
             this.fname.Text = "file name:";
             // 
@@ -1039,6 +1057,22 @@
             this.imagepanel.Size = new System.Drawing.Size(1226, 605);
             this.imagepanel.TabIndex = 22;
             this.imagepanel.Paint += new System.Windows.Forms.PaintEventHandler(this.imagepanel_Paint);
+            // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Tai Le", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.Window;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(782, 11);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(174, 39);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "Color Visualization";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox1
             // 
@@ -1118,22 +1152,6 @@
             this.openBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.openBtn.UseVisualStyleBackColor = true;
             this.openBtn.Click += new System.EventHandler(this.OpenButton_Click_1);
-            // 
-            // ColorQuant
-            // 
-            this.ColorQuant.FlatAppearance.BorderSize = 0;
-            this.ColorQuant.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColorQuant.Font = new System.Drawing.Font("Microsoft Tai Le", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ColorQuant.ForeColor = System.Drawing.SystemColors.Window;
-            this.ColorQuant.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ColorQuant.Location = new System.Drawing.Point(475, 11);
-            this.ColorQuant.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ColorQuant.Name = "ColorQuant";
-            this.ColorQuant.Size = new System.Drawing.Size(174, 39);
-            this.ColorQuant.TabIndex = 13;
-            this.ColorQuant.Text = "Color Quantization";
-            this.ColorQuant.UseVisualStyleBackColor = true;
-            this.ColorQuant.Click += new System.EventHandler(this.ColorQuant_Click);
             // 
             // MainForm
             // 
@@ -1259,6 +1277,7 @@
         private System.Windows.Forms.Panel imagepanel;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button ColorQuant;
+        private System.Windows.Forms.Button button1;
     }
 }
 

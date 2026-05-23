@@ -24,12 +24,8 @@ namespace PixelLab
         string previewMode = "All";
         private string currentColorSpace = "RGB";
         private float zoomLevel = 1.0f;
-        private int Clamp(int val)
-        {
-            return Math.Max(0, Math.Min(255, val));
-        }
 
-        private float Clamp01(float val)
+        private float Clamp(float val)
         {
             return Math.Max(0f, Math.Min(1f, val));
         }
@@ -37,7 +33,34 @@ namespace PixelLab
         {
             InitializeComponent();
         }
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            comboBox1.SelectedItem = "RGB";
+            currentColorSpace = "RGB";
+            UpdateChannelLabels();
 
+        }
+        private void MainForm_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+        }
+
+        private void MainForm_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+
+            if (files.Length > 0)
+            {
+                originalImage = new Bitmap(files[0]);
+
+                currentImage = new Bitmap(originalImage);
+
+                pictureBox1.Image = currentImage;
+            }
+        }
         //apply RGB
         private void UpdateImage()
         {
@@ -56,20 +79,6 @@ namespace PixelLab
             UpdateColorInfo(currentImage);
             pictureBox1.Image = currentImage;
         }
-
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            comboBox1.SelectedItem = "RGB"; 
-            currentColorSpace = "RGB";
-            UpdateChannelLabels();
-
-        }
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
                 
         //open Button 
         private void OpenButton_Click_1(object sender, EventArgs e)
@@ -95,20 +104,6 @@ namespace PixelLab
             }
         }
 
-        private void rightPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void colorChannels_Enter(object sender, EventArgs e)
-        {
-
-        }
         // save button
         private void SaveButton_Click_1(object sender, EventArgs e)
         {
@@ -129,8 +124,6 @@ namespace PixelLab
                 MessageBox.Show("Image Saved Successfully");
             }
         }
-
-
         // reset button
         private void resetBtn_Click(object sender, EventArgs e)
         {
@@ -142,109 +135,6 @@ namespace PixelLab
             pictureBox1.Image = currentImage;
         }
 
-        private void trackBar1_Scroll(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void trackBar4_Scroll(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void filewidth_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void fresolution_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void filename_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox3_Enter_1(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label4_Click_2(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox4_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MainForm_DragEnter(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-            {
-                e.Effect = DragDropEffects.Copy;
-            }
-        }
-
-        private void MainForm_DragDrop(object sender, DragEventArgs e)
-        {
-            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-
-            if (files.Length > 0)
-            {
-                originalImage = new Bitmap(files[0]);
-
-                currentImage = new Bitmap(originalImage);
-
-                pictureBox1.Image = currentImage;
-            }
-        }
         private void tbRGB_Scroll(object sender, EventArgs e)
         {
             CVal1.Text = trackBarC1.Value.ToString();
@@ -260,31 +150,7 @@ namespace PixelLab
                 ApplyColorSpace();
         }
 
-        private void redVal_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void greenVal_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void blueVal_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void brightVal_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void saturationVal_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        //channel options
         private void allBtn_Click(object sender, EventArgs e)
         {
             previewMode = "All";
@@ -309,11 +175,7 @@ namespace PixelLab
             UpdateImage();
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        // color system (RGB , CMYK .... )
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             currentColorSpace = comboBox1.SelectedItem.ToString();
@@ -415,17 +277,17 @@ namespace PixelLab
                     case "HSV":
                         var (H, S, V) = ColorConvert.RGBtoHSV(rOrig, gOrig, bOrig);
                         H = ((H + v1) % 360 + 360) % 360;
-                        S = Clamp01(S + v2 / 100f);
-                        V = Clamp01(V + v3 / 100f);
+                        S = Clamp(S + v2 / 100f);
+                        V = Clamp(V + v3 / 100f);
                         (r, g, b) = ColorConvert.HSVtoRGB(H, S, V);
                         break;
 
                     case "CMYK":
                         var (C, M, Y, K) = ColorConvert.RGBtoCMYK(rOrig, gOrig, bOrig);
-                        C = Clamp01(C + v1 / 100f);
-                        M = Clamp01(M + v2 / 100f);
-                        Y = Clamp01(Y + v3 / 100f);
-                        K = Clamp01(K + v4 / 100f);
+                        C = Clamp(C + v1 / 100f);
+                        M = Clamp(M + v2 / 100f);
+                        Y = Clamp(Y + v3 / 100f);
+                        K = Clamp(K + v4 / 100f);
                         (r, g, b) = ColorConvert.CMYKtoRGB(C, M, Y, K);
                         break;
 
@@ -581,26 +443,6 @@ namespace PixelLab
             zoomLevel = zoomtrackBar.Value / 100f;
             ApplyZoom();
         }
-
-        private void persentLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint_1(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void imagepanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
         private void UpdatePictureInfo(string filePath)
         {
             FileInfo fi = new FileInfo(filePath);
@@ -625,6 +467,122 @@ namespace PixelLab
             Color_Quantization qf = new Color_Quantization(originalImage);
             qf.Show();
         }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ColorSpaceVisualizer csv = new ColorSpaceVisualizer();
+            csv.Show();
+        }
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void rightPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void colorChannels_Enter(object sender, EventArgs e)
+        {
+
+        }
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click_1(object sender, EventArgs e)
+        {
+
+        }
+        private void filewidth_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fresolution_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void filename_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label4_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
+        private void groupBox3_Enter_1(object sender, EventArgs e)
+        {
+
+        }
+        private void persentLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+        private void imagepanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void redVal_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void greenVal_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void blueVal_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void brightVal_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void saturationVal_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }
 

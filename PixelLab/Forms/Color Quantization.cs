@@ -18,15 +18,15 @@ namespace PixelLab.Forms
         {
             InitializeComponent();
             originalimage = image;
-            originalImage.Image = originalimage;
-            pictureBox1.Image = originalimage;
+            originall.Image = originalimage;
+            nnew.Image = originalimage;
         }
 
         private void Color_Quantization_Load(object sender, EventArgs e)
         {
 
         }
-
+        // number of colors scroll
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
             int colorCount = trackBar1.Value;
@@ -34,9 +34,33 @@ namespace PixelLab.Forms
 
             Bitmap quantized = ColorQuantizate.QuantizeColors(originalimage, colorCount);
             
-            pictureBox1.Image = quantized;
+            nnew.Image = quantized;
+        }
+        // save the picture
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (originalimage == null)
+            {
+                MessageBox.Show("Please open an image first");
+                return;
+            }
+
+            SaveFileDialog sfd = new SaveFileDialog();
+
+            sfd.Filter = "PNG Image|*.png|JPEG Image|*.jpg|Bitmap Image|*.bmp";
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                originalimage.Save(sfd.FileName);
+
+                MessageBox.Show("Image Saved Successfully");
+            }
         }
 
+        private void newImage_Click(object sender, EventArgs e)
+        {
+
+        }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
@@ -46,5 +70,6 @@ namespace PixelLab.Forms
         {
 
         }
+
     }
 }
